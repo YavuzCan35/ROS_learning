@@ -1,0 +1,71 @@
+*if not installed_ubuntu2004:then install that verison for ros noetic ninjemy
++open and login to ubuntu
++ to download ros go to website and follow the steps in ubuntu terminal
+  https://wiki.ros.org/noetic/Installation/Ubuntu
+
+*point you realized you need ubuntu20.04 version
+
+
+*during installation steps you met this error after sudo apt install ros-desktop-full-version:
+
+Err:1 http://security.ubuntu.com/ubuntu focal-security/main amd64 libc6 amd64 2.31-0ubuntu9.18
+  404  Not Found [IP: 91.189.91.81 80]
+Err:2 http://security.ubuntu.com/ubuntu focal-security/main amd64 libc-dev-bin amd64 2.31-0ubuntu9.18
+  404  Not Found [IP: 91.189.91.81 80]
+Err:3 http://security.ubuntu.com/ubuntu focal-security/main amd64 libc6-dev amd64 2.31-0ubuntu9.18
+  404  Not Found [IP: 91.189.91.81 80]
+E: Failed to fetch http://security.ubuntu.com/ubuntu/pool/main/g/glibc/libc6_2.31-0ubuntu9.18_amd64.deb  404  Not Found [IP: 91.189.91.81 80]
+E: Failed to fetch http://security.ubuntu.com/ubuntu/pool/main/g/glibc/libc-dev-bin_2.31-0ubuntu9.18_amd64.deb  404  Not Found [IP: 91.189.91.81 80]
+E: Failed to fetch http://security.ubuntu.com/ubuntu/pool/main/g/glibc/libc6-dev_2.31-0ubuntu9.18_amd64.deb  404  Not Found [IP: 91.189.91.81 80]
+E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?
+
++problem solved following this link :   https://medium.datadriveninvestor.com/ros-setup-beginner-2cac74d9a6b6
++extracted commands from the link above:
+#!/bin/bash
+# -------------------------------
+# Add ROS repository to system
+# -------------------------------
+sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+# -------------------------------
+# Add ROS key
+# -------------------------------
+curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
+
+# -------------------------------
+# Update package index
+# -------------------------------
+sudo apt update
+
+# -------------------------------
+# Install ROS (Desktop-Full version)
+# -------------------------------
+sudo apt install ros-noetic-desktop-full -y
+
++found kinda error message:
+
+Processing triggers for libgdk-pixbuf2.0-0:amd64 (2.40.0+dfsg-3ubuntu0.5) ...
+Processing triggers for rygel (0.38.3-1ubuntu1) ...
+Processing triggers for sgml-base (1.29.1) ...
+Processing triggers for libc-bin (2.31-0ubuntu9.9) ...
+/sbin/ldconfig.real: Can't link /usr/lib/wsl/lib/libnvoptix_loader.so.1 to libnvoptix.so.1
+
+
++the rest of the commands:
+
+# -------------------------------
+# Setup ROS environment
+# -------------------------------
+echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
+source ~/.bashrc
+
+# -------------------------------
+# Install rosdep
+# -------------------------------
+sudo apt install python3-rosdep -y
+
+# -------------------------------
+# Initialize rosdep
+# -------------------------------
+sudo rosdep init
+rosdep update
+
