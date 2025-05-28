@@ -1,0 +1,25 @@
++ open powershell as administrator
+
++run command:
+  dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+
++restart computer.
+
++open powershell as administrator
+
++run command:
+  dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+
++install vsl2:
+https://github.com/microsoft/WSL2-Linux-Kernel
+
++open powershell as administrator
+
++run command:
+  wsl --set-default-version 2
+
++download version of ubuntu from  microsoft store like(ros versions has specific ubuntu version requirements) :
+https://www.microsoft.com/store/apps/9N9TNGVNDL3Q
+
++after download you will need a username and password for linux
+  eg. deneme1 , 123456
