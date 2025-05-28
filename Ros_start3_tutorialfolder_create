@@ -1,0 +1,24 @@
++ubuntu termimnal command:
+  mkdir -p tutorials/src
+
+  cd tutorials/
+
+  ls
+
+  catkin_make
+
+  ls
+
+  cd src/
+
+  ls
+
++create package:
+  cd src/
+  catkin_create_pkg tutorial2(this is custom name of the package)   (then dependencies here if you have)
+  ls
+  cd tutorial2/
+
+ +to remove a directory:               rm -rfv [name of the directory)
+ +to edit the xml file there:          vim package.xml
+ + to save and exit when in insert situation, press ESC and type       :wq       to save and exit.
