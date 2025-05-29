@@ -65,4 +65,5 @@ roscore
 
 rosrun tutorials publisher_node.py
 
+*error about the code
 
