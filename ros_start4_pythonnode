@@ -1,0 +1,68 @@
++create a new project folder and name it python_catkin:
+
+mkdir python_catkin
+
++create src folder:
+mkdir src
+
++create other required folders in python_catkin:
+catkin_make
+
+cd src
+
++command usage of create_catkin_pkg name_of_project rest_of_dependencies in src folder :
+catkin_create_pkg tutorials rospy std_msgs
+
+
++go to file browser of windows type \\wsl$ to address bar to find ubuntu files
+
+like: \\wsl.localhost\Ubuntu-20.04\home\pilot1\python_catkin\src\tutorials
+
+the create a new folder there by vscode studio and name the folder as scripts, then a file in it named python_node.py
+
+
++write the following code to the file:
+
+#!/usr/bin/env
+import rospy
+from std_msgs.msg import String
+def talk_to_me():
+    pub= rospy.Publisher("talking_topic",String,queue_size=10)
+    rospy.init_node("publisher_node",anonymous=True)
+    rate=rospy.Rate(1)
+    rospy.loginfo("Started publisher node, now publishing:")
+    while not rospy.is_shutdown():
+        msg = "Hello Yavuz, %s" % rospy.get_time()
+        pub.publish(msg)
+        rate.sleep()
+if __name__=="__main__":
+    try:
+        talk_to_me()
+    except rospy.ROSInterruptException:
+        pass
+
++now go to cmakelist file and place the following lines below catkin_package(etc....) :
+catkin_install_python(PROGRAMS scripts/publisher_node.py
+  DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
+
++from ubunto terminal go to project folder named python_catkin then do "catkin_make":
+
+cd ..
+catkin_make
+
+
++then do followin:
+
+source devel/setup.bash
+
+
++open a new tab in ubuntu terminal and run roscore as command:
+
+roscore
+
+
++then in previous terminal:
+
+rosrun tutorials publisher_node.py
+
+
