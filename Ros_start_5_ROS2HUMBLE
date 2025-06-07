@@ -1,0 +1,49 @@
+follow all the commands here_
+https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
+
+after finish, everytime you run ros2humble you should do first(in every terminal that you want to use the ros):
+
+source /opt/ros/humble/setup.bash
+
+to avoid using this do once to add it into oto execution during terminal openning:
+
+sudo apt install gedit
+
+ gedit ~/.bashrc
+
+
+add to the end of the file "source /opt/ros/humble/setup.bash" with out quotes-
+
+
+
+now you can run talker listener examples.
+
+
+rqt_graph is ros tool that shows active tool relations graphically
+
+
+
+sudo apt install python3-colcon-common-extensions
+
+
+cd /usr/share/colcon_argcomplete/hook
+
+ gedit ~/.bashrc
+
+att the end of document put this line:
+source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+
+then save the file and exit.
+then do on every open terminal :
+
+source  ~/.bashrc
+
+
+
+
+
+
+
+
+
+
