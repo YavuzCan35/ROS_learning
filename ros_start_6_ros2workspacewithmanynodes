@@ -1,1 +1,29 @@
 
+after source  ~/.bashrc exit all folders to top level, cd ..
+
+then create your own ros workspace by:
+
+sudo mkdir ~/ros2_ws
+cd ros2_ws
+sudo mkdir src
+sudo colcon build
+source ~/ros2_ws/install/setup.bash
+
+go to  ~/.bashrc add source ~/ros2_ws/install/setup.bash to run applications for your created workspace 
+
+gedit ~/.bashrc
+
+cd  ~/ros2_ws/src
+
+ls
+
+ros2 pkg create my_robot_controller --build-type ament_python --dependencies rclpy
+
+or ament_cmake would be for the c++ pkg.
+
+sudo snap install code --classic              ()downloads the vscode
+
+still inside the src part of workspace then do:
+
+code .
+
