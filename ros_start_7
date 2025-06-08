@@ -1,0 +1,9 @@
+ros2 topic list
+ros2 topic info /chatter        (name of the topic at the end called chatter)
+
+ros2 interface show std_msgs/msg/String     (last argument shown by previos info line and can be get with pressing tab)
+
+ros2 topic echo /chatter      (echoes the topic)  (creates a new listener as cli) 
+
+
+
