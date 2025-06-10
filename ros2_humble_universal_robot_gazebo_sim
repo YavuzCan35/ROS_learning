@@ -1,0 +1,41 @@
+mkdir ur_yt_ws
+cd ur_yt_ws/
+mkdir src
+colcon build
+source install/setup.bash
+cd src
+git clone -b humble https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.git
+
+
+###note: https://github.com/UniversalRobots/Universal_Robots_Isaac_Driver
+
+### gazebo download:
+
+git clone -b humble https://github.com/UniversalRobots/Universal_Robots_ROS2_Gazebo_Simulation.git
+
+rosdep update && rosdep install --ignore-src --from-paths . -y
+
+cd ur_yt_ws/
+
+colcon build
+source install/setup.bash
+
+cd src/
+
+ls
+
+code .
+
+
+### in the urdf folder  under universal_robots_ros2_description , ur.urdf.xacro file
+### is the main file of the ur5 description. (do not do if not needed: set the sim_gazebo
+### option true .) 
+### ur_macro.xacro will be the edited file according to model
+### ur.ros2_control.xacro contains under hardware part, gazebo plugin part
+
+cd ur_yt_ws/src
+
+ros2 launch ur_simulation_gazebo ur_sim_control.launch.py
+
+### /home/Frau/ur_yt_ws/install/ur_description/share/ur_description/rviz/view_robot.rviz
+### ros2 launch webots_ros2_tiago robot_launch.py rviz:=true
