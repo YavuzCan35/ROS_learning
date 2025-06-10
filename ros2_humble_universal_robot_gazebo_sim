@@ -1,3 +1,13 @@
+sudo apt install ros-humble-ros2-control
+sudo apt install ros-humble-ros2-controllers
+sudo apt install ros-humble-gripper-controllers
+sudo apt install gazebo
+sudo apt install ros-humble-gazebo-ros2-control
+sudo apt install ros-humble-gazebo-ros-pkgs
+sudo apt install ros-humble-xacro
+sudo apt install ros-humble-rmw-cyclonedds-cpp
+sudo apt install ros-humble-sensor-msgs
+
 mkdir ur_yt_ws
 cd ur_yt_ws/
 mkdir src
@@ -38,4 +48,10 @@ cd ur_yt_ws/src
 ros2 launch ur_simulation_gazebo ur_sim_control.launch.py
 
 ### /home/Frau/ur_yt_ws/install/ur_description/share/ur_description/rviz/view_robot.rviz
-### ros2 launch webots_ros2_tiago robot_launch.py rviz:=true
+### ros2 launch ur_simulation_gazebo ur_sim_control.launch.py rviz:=true
+
+ros2 control list_controllers
+
+#ros2 topic pub /joint_trajectory_controller/joint_trajectory trajectory_msg/JointTrajectory "the script to move here https://www.youtube.com/watch?v=qnuwTOB4DKw"
+
+ros2 launch ur_simulation_gazebo ur_sim_moveit.launch.py rviz:=true
